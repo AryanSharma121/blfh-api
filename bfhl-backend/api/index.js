@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bfhlRoutes = require('../routes/bfhl');
+const bfhlRoutes = require('../routes/bfhl');  // Notice the relative path
 
 const app = express();
 
@@ -12,4 +12,7 @@ app.use(express.json());
 app.use('/bfhl', bfhlRoutes);
 
 // Export the app (for Vercel serverless functions)
-module.exports = app;
+const server = require('http').createServer(app);
+module.exports = (req, res) => {
+  server.emit('request', req, res);
+};
