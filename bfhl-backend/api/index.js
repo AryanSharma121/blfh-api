@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bfhlRoutes = require('../routes/bfhl');  // Notice the relative path
+const bfhlRoutes = require('./routes/bfhl');  // Notice the relative path
 
 const app = express();
 
